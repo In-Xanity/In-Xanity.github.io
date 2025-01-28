@@ -14,7 +14,9 @@ function fit_to_screen(i){
 	var winX = window.innerWidth + "px";
 	var winY = window.innerHeight + "px";
 	var vbar = false;
-	if (document.body.scrollHeight > document.body.clientHeight) // vertical scrollbar
+	i.style.maxHeight = winY;
+	i.style.maxWidth = winX;
+	/*if (document.body.scrollHeight > document.body.clientHeight) // vertical scrollbar
 	{
 			i.style.maxHeight = winY;
 			vbar = true;
@@ -39,7 +41,7 @@ function fit_to_screen(i){
 					i.removeAttribute("style");
 					i.style.maxWidth = winX;
 			}
-	}
+	}*/
 }
 
 function resizeAll(){
