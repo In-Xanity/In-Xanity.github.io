@@ -1,5 +1,10 @@
 window.addEventListener("load", (event) => {
   console.log("page is fully loaded");
+  $$("img").forEach(img => {
+	  if (!img.naturalWidth && !img.naturalHeight) {
+	    img.parentNode.removeChild(img);
+	  }
+	});
   resizeAll();
 });
 
