@@ -16,7 +16,7 @@ function fit_to_screen(i){
 	var vbar = false;
 	if (document.body.scrollHeight > document.body.clientHeight) // vertical scrollbar
 	{
-			i.style.height = winY;
+			i.style.maxHeight = winY;
 			vbar = true;
 	}
 	if (document.body.scrollWidth > document.body.clientWidth) // horizontal scrollbar
@@ -26,18 +26,18 @@ function fit_to_screen(i){
 					if ((document.body.scrollHeight - document.body.clientHeight) > (document.body.scrollWidth - document.body.clientWidth)) // let's see which one is bigger
 					{
 							i.removeAttribute("style");
-							i.style.height = winY;
+							i.style.maxHeight = winY;
 					}
 					else
 					{
 							i.removeAttribute("style");
-							i.style.width = winX;
+							i.style.maxWidth = winX;
 					}
 			}
 			else
 			{
 					i.removeAttribute("style");
-					i.style.width = winX;
+					i.style.maxWidth = winX;
 			}
 	}
 }
