@@ -16,20 +16,22 @@ function fit_to_screen(i){
 	//let vbar = false;
 	i.dataset.limX = false;
 	i.dataset.limY = false;
+	i.dataset.scaleLevel = 0;
 	i.dataset.diffX = i.naturalWidth - winX;
 	i.dataset.diffY = i.naturalHeight - winY;
 	if (i.dataset.diffX > 0)
 	{
 		i.style.maxWidth = winX + "px";
 		i.dataset.limX = true;
+		i.dataset.scaleLevel++;
 	}
 	if (i.dataset.diffY > 0)
 	{
 		i.style.maxHeight = winY + "px";
 		i.dataset.limY = true;
+		i.dataset.scaleLevel++;
 	}
 	i.dataset.lim1 = (i.dataset.diffX > i.dataset.diffY)? "X" : "Y";
-	i.dataset.scaleLevel = Number(i.dataset.limX) + Number(i.dataset.limY);
 	/*if (document.body.scrollHeight > document.body.clientHeight) // vertical scrollbar
 	{
 			i.style.maxHeight = winY;
