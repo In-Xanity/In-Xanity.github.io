@@ -10,12 +10,26 @@ window.addEventListener("load", (event) => {
 
 function fit_to_screen(i){
 	i.removeAttribute("style");
-	i.setAttribute("rescaled","true");
-	var winX = window.innerWidth + "px";
-	var winY = window.innerHeight + "px";
-	var vbar = false;
-	i.style.maxHeight = winY;
-	i.style.maxWidth = winX;
+	//i.setAttribute("rescaled","true");
+	let winX = window.innerWidthx;
+	let winY = window.innerHeight;
+	//let vbar = false;
+	i.dataset.limX = false;
+	i.dataset.limY = false;
+	i.dataset.diffX = i.naturalWidth - winX;
+	i.dataset.diffY = i.naturalHeight - winY;
+	if (i.dataset.diffX > 0)
+	{
+		i.style.maxWidth = winX + "px";
+		i.dataset.limX = true;
+	}
+	if (i.dataset.diffY > 0)
+	{
+		i.style.maxHeight = winY + "px";
+		i.dataset.limY = true;
+	}
+	i.dataset.lim1 = (i.dataset.diffX > i.dataset.diffY)? "X" : "Y";
+	i.dataset.scaleLevel = i.dataset.limX + i.dataset.limY;
 	/*if (document.body.scrollHeight > document.body.clientHeight) // vertical scrollbar
 	{
 			i.style.maxHeight = winY;
@@ -51,17 +65,33 @@ function resizeAll(){
 }
 	  
 function rescale(i){
-	if (i.hasAttribute("rescaled"))
-	{
-		i.removeAttribute("rescaled");
-		i.removeAttribute("style");
-		console.log("large");
-	}
-	else
-	{
-		i.setAttribute("rescaled","true");
-		fit_to_screen(i);
-		console.log("small");
+	switch(i.dataset.scaleLevel) {
+		case 0:
+			fit_to_screen(i);
+		break;
+		case 1:
+			i.removeAttribute("style");
+			i.dataset.limX = false;
+			i.dataset.limY = false;
+			i.dataset.scaleLevel = 0;
+		break;
+		case 2:
+			switch(i.dataset.lim1) {
+				case "X":
+					i.style.removeProperty("maxWidth");
+					i.dataset.limX = false;
+				break;
+				case "Y":
+					i.style.removeProperty("maxHeight");
+					i.dataset.limY = false;
+				break;
+				default:
+					
+			}
+			i.dataset.scaleLevel = 1;
+		break;
+		default:
+			// code block
 	}
 }
 
