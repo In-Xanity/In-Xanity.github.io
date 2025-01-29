@@ -14,21 +14,21 @@ function fit_to_screen(i){
 	let winX = window.innerWidth;
 	let winY = window.innerHeight;
 	//let vbar = false;
-	i.dataset.limX = false;
-	i.dataset.limY = false;
+	//i.dataset.limX = false;
+	//i.dataset.limY = false;
 	i.dataset.scaleLevel = 0;
 	i.dataset.diffX = i.naturalWidth - winX;
 	i.dataset.diffY = i.naturalHeight - winY;
 	if (i.dataset.diffX > 0)
 	{
 		i.style.maxWidth = winX + "px";
-		i.dataset.limX = true;
+		//i.dataset.limX = true;
 		i.dataset.scaleLevel++;
 	}
 	if (i.dataset.diffY > 0)
 	{
 		i.style.maxHeight = winY + "px";
-		i.dataset.limY = true;
+		//i.dataset.limY = true;
 		i.dataset.scaleLevel++;
 	}
 	i.dataset.lim1 = (i.dataset.diffX > i.dataset.diffY)? "X" : "Y";
@@ -68,24 +68,24 @@ function resizeAll(){
 	  
 function rescale(i){
 	switch(i.dataset.scaleLevel) {
-		case 0:
+		case "0":
 			fit_to_screen(i);
 		break;
-		case 1:
+		case "1":
 			i.removeAttribute("style");
-			i.dataset.limX = false;
-			i.dataset.limY = false;
+			//i.dataset.limX = false;
+			//i.dataset.limY = false;
 			i.dataset.scaleLevel = 0;
 		break;
-		case 2:
+		case "2":
 			switch(i.dataset.lim1) {
 				case "X":
 					i.style.removeProperty("maxWidth");
-					i.dataset.limX = false;
+					//i.dataset.limX = false;
 				break;
 				case "Y":
 					i.style.removeProperty("maxHeight");
-					i.dataset.limY = false;
+					//i.dataset.limY = false;
 				break;
 				default:
 					
