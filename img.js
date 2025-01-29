@@ -11,7 +11,7 @@ window.addEventListener("load", (event) => {
 function fit_to_screen(i){
 	i.removeAttribute("style");
 	//i.setAttribute("rescaled","true");
-	let winX = window.innerWidthx;
+	let winX = window.innerWidth;
 	let winY = window.innerHeight;
 	//let vbar = false;
 	i.dataset.limX = false;
@@ -29,7 +29,7 @@ function fit_to_screen(i){
 		i.dataset.limY = true;
 	}
 	i.dataset.lim1 = (i.dataset.diffX > i.dataset.diffY)? "X" : "Y";
-	i.dataset.scaleLevel = i.dataset.limX + i.dataset.limY;
+	i.dataset.scaleLevel = Number(i.dataset.limX) + Number(i.dataset.limY);
 	/*if (document.body.scrollHeight > document.body.clientHeight) // vertical scrollbar
 	{
 			i.style.maxHeight = winY;
