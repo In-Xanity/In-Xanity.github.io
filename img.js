@@ -80,11 +80,11 @@ function rescale(i){
 		case "2":
 			switch(i.dataset.lim1) {
 				case "X":
-					i.style.removeProperty("maxWidth");
+					i.style.maxWidth = '';
 					//i.dataset.limX = false;
 				break;
 				case "Y":
-					i.style.removeProperty("maxHeight");
+					i.style.maxHeight = '';
 					//i.dataset.limY = false;
 				break;
 				default:
