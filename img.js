@@ -1,13 +1,26 @@
 window.addEventListener("load", (event) => {
   console.log("page is fully loaded");
-  $$("img").forEach(img => {
-	  if (!img.naturalWidth && !img.naturalHeight) {
-	    //img.parentNode.removeChild(img);
-	    img.parentNode.setAttribute("style","display: none");
-	  }
-	});
-  resizeAll();
+  init();
 });
+
+function init(){
+	document.getElementByID("init_button").remove();
+	if (document.readyState == "complete"){
+		$$("img").forEach(img => {
+			if (!img.naturalWidth && !img.naturalHeight) {
+				//img.parentNode.removeChild(img);
+				img.parentNode.setAttribute("style","display: none");
+			}
+		});
+	  	resizeAll();
+	}
+	else{
+		window.addEventListener("load", (event) => {
+		  console.log("page is fully loaded");
+		  init();
+		});
+	}
+}
 
 function fit_to_screen(i){
 	i.removeAttribute("style");
