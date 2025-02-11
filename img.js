@@ -1,4 +1,4 @@
-document.getElementByID("btn_init").remove();
+document.getElementById("btn_init").remove();
 window.addEventListener("load", (event) => {
   console.log("page is fully loaded");
   console.log(document.readyState);
@@ -6,7 +6,7 @@ window.addEventListener("load", (event) => {
 });
 
 function init(){
-	document.getElementByID("btn_init").remove();
+	document.getElementById("btn_init").remove();
 	if (document.readyState == "complete"){
 		$$("img").forEach(img => {
 			if (!img.naturalWidth && !img.naturalHeight) {
