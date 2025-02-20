@@ -4,7 +4,28 @@ window.addEventListener("load", (event) => {
   console.log(document.readyState);
   //init();
   if (typeof imgs !== 'undefined') {
-    console.log(imgs);
+	
+	let imageSources = imgs.split("#");
+		  let loadedImages = 0;
+	
+		  imageSources.forEach(src => {
+			    const img = new Image();
+			    img.onload = () => {
+				        loadedImages++;
+				        console.log(`${src} loaded`);
+				        if (loadedImages === imageSources.length) {
+						      console.log('All images loaded');
+					}
+			    };
+			    img.onerror = () => {
+				        console.error(`Error loading ${src}`);
+				        loadedImages++;
+				        if (loadedImages === imageSources.length) {
+						       console.log('All images loaded or errored');
+					}
+			    }
+			    img.src = src;
+		  });  
   }
 });
 
