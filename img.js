@@ -12,7 +12,7 @@ window.addEventListener("load", (event) => {
 			    const img = new Image();
 			    img.onload = () => {
 				        loadedImages++;
-				    	document.body.appendchild(img);
+				    	document.body.appendChild(img);
 				        console.log(`${src} loaded`);
 				        if (loadedImages === imageSources.length) {
 						      console.log('All images loaded');
