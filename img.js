@@ -2,7 +2,10 @@ document.getElementById("btn_init").remove();
 window.addEventListener("load", (event) => {
   console.log("page is fully loaded");
   console.log(document.readyState);
-  init();
+  //init();
+  if (typeof imgs !== 'undefined') {
+    console.log(imgs);
+  }
 });
 
 function init(){
