@@ -30,7 +30,8 @@ window.addEventListener("load", (event) => {
 			    }
 			    img.src = src[0];
 			    img.alt = src[1];
-			    //img.addEventListener('click', function() {rescale(this);});  
+			    img.addEventListener('click', function() {rescale(this);});  
+		  });  
   }
 });
 
