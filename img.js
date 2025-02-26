@@ -30,7 +30,7 @@ window.addEventListener("load", (event) => {
 			    }
 			    img.src = src[0];
 			    img.alt = src[1];
-			    img.onclick='rescale(this);'
+			    img.onclick = rescale(this);
 		  });  
   }
 });
