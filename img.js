@@ -7,6 +7,7 @@ window.addEventListener("load", (event) => {
 	
 	let imageSources = imgs.split("#%#");
 		  let loadedImages = 0;
+	  	  let erroredImages = 0;
 	
 		  imageSources.forEach(item => {
 			  let src = item.split("%#%");
@@ -22,12 +23,14 @@ window.addEventListener("load", (event) => {
 			    img.onerror = () => {
 				        console.error(`Error loading ${src[0]}`);
 				        loadedImages++;
+				        erroredImages++;
 				        if (loadedImages === imageSources.length) {
 						       console.log('All images loaded or errored');
 					}
 			    }
 			    img.src = src[0];
 			    img.alt = src[1];
+			    img.onclick='rescale(this);'
 		  });  
   }
 });
