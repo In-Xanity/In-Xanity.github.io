@@ -18,6 +18,7 @@ window.addEventListener("load", (event) => {
 				        console.log(`${src[0]} loaded`);
 				        if (loadedImages === imageSources.length) {
 						      console.log('All images loaded');
+						      resizeAll();
 					}
 			    };
 			    img.onerror = () => {
@@ -26,6 +27,7 @@ window.addEventListener("load", (event) => {
 				        erroredImages++;
 				        if (loadedImages === imageSources.length) {
 						       console.log('All images loaded or errored');
+						       resizeAll();	
 					}
 			    }
 			    img.src = src[0];
