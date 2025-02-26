@@ -5,27 +5,29 @@ window.addEventListener("load", (event) => {
   //init();
   if (typeof imgs !== 'undefined') {
 	
-	let imageSources = imgs.split("#");
+	let imageSources = imgs.split("#%#");
 		  let loadedImages = 0;
 	
-		  imageSources.forEach(src => {
+		  imageSources.forEach(item => {
+			  let src = item.split("%#%");
 			    const img = new Image();
 			    img.onload = () => {
 				        loadedImages++;
 				    	document.body.appendChild(img);
-				        console.log(`${src} loaded`);
+				        console.log(`${src[0]} loaded`);
 				        if (loadedImages === imageSources.length) {
 						      console.log('All images loaded');
 					}
 			    };
 			    img.onerror = () => {
-				        console.error(`Error loading ${src}`);
+				        console.error(`Error loading ${src[0]}`);
 				        loadedImages++;
 				        if (loadedImages === imageSources.length) {
 						       console.log('All images loaded or errored');
 					}
 			    }
-			    img.src = src;
+			    img.src = src[0];
+			    img.alt = src[1];
 		  });  
   }
 });
